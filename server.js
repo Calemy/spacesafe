@@ -22,7 +22,7 @@ async function main(){
         return await require('./modules/sharex')(req, reply)
     })
 
-    fastify.post('/api/register', async (req, reply) => {
+    fastify.post('/register', async (req, reply) => {
         return await require('./modules/user').create(req, reply)
     })
 
