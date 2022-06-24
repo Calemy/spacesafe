@@ -3,7 +3,6 @@ const { private } = require('../config.js')
 module.exports = {
     create : async function(req, reply){
         const { getUser, request, get } = require('../helper/database')
-        console.log(req.body)
 
         const { username, password, invite } = req.body
 

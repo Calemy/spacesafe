@@ -1,6 +1,7 @@
+const fs = require('fs')
 const { getUser } = require('../helper/database')
 const { checkPassword } = require('../helper/global')
-const fs = require('fs')
+const { name } = require('../config')
 module.exports = async function(req, reply){
     const { u, p } = req.query
 
@@ -13,7 +14,7 @@ module.exports = async function(req, reply){
     if(!user) return { error: 'User not found' }
 
     if(!await checkPassword(password, user.password)) return { error: 'Incorrect password'}
-    reply.header('Content-Disposition', `attachment; filename="catboy.best.sxcu"`)
+    reply.header('Content-Disposition', `attachment; filename="${name}.sxcu"`)
 
     if(fs.existsSync(`./profiles/${user.id}.sxcu`)) reply.send(fs.readFileSync(`./profiles/${user.id}.sxcu`))
 

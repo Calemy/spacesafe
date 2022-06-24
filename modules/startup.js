@@ -1,7 +1,7 @@
 const fs = require('fs')
 module.exports = async function(){
     if(!fs.existsSync('./config.js')){
-        console.log("No Version file found, creating config file")
+        console.log("No config file found, creating config file")
         fs.writeFileSync('./config.js', `module.exports = {
     port: 2445,
     name: "Spacesafe",
@@ -14,6 +14,11 @@ module.exports = async function(){
     },
     private: false
 }`)
+ 
+        console.log("Creating folders")
+        fs.mkdirSync('./profiles')
+        fs.mkdirSync('./uploads')
+
         process.exit(0)
     }
 }
